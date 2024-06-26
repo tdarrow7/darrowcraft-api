@@ -18,7 +18,8 @@ class Coffee(models.Model):
     dateadded = models.DateTimeField(auto_now=True)
     brand = models.ForeignKey("Brand", on_delete=models.CASCADE, related_name='coffees')
     roasttype = models.ForeignKey("RoastType", on_delete=models.CASCADE, related_name='coffees')
-    description = models.TextField(max_length=128)
+    description = models.TextField(max_length=512)
+    imageurl = models.TextField(max_length=128, null=True)
 
 class RoastType(models.Model):
     id = models.AutoField(primary_key=True)
