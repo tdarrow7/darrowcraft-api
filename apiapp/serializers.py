@@ -1,17 +1,17 @@
-from rest_framework.serializers import ModelSerializer, HyperlinkedModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer
 from .models import Coffee, RoastType, Brand
 
-class CoffeeSerializer(ModelSerializer):
+class CoffeeSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Coffee
         fields = '__all__'
 
-class RoastTypeSerializer(ModelSerializer):
+class RoastTypeSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = RoastType
         fields = '__all__'
 
-class BrandSerializer(ModelSerializer):
+class BrandSerializer(HyperlinkedModelSerializer):
     class Meta:     
         model = Brand
         fields = '__all__'
