@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", 'False') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.timdarrow.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost:3000', '.vercel.app', '.timdarrow.com']
 
 
 # Application definition
