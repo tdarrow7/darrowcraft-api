@@ -4,7 +4,7 @@ from .models import Coffee, RoastType, Brand
 class CoffeeSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Coffee
-        fields = '__all__'
+        fields = ['id', 'url', 'name', 'isground', 'description', 'dateadded', 'imageurl', 'brand', 'roasttype']
 
 class RoastTypeSerializer(HyperlinkedModelSerializer):
     class Meta:
