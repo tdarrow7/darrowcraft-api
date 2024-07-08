@@ -29,3 +29,20 @@ class RoastType(models.Model):
     dateadded = models.DateTimeField(auto_now=True)
     def __str__(self) -> str:
         return self.name
+    
+class StackType(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=36)
+    def __str__(self) -> str:
+        return self.name
+    
+class CodeProject(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=72)
+    link = models.CharField(max_length=128, null=True)
+    description = models.CharField(max_length=1024, null=True)
+    languages = models.CharField(max_length=128, null=True)
+    github = models.CharField(max_length=128, null=True)
+    dateadded = models.DateTimeField(auto_now=True)
+    stacktype= models.ForeignKey("StackType", on_delete=models.DO_NOTHING, related_name="codeprojects")
+    
