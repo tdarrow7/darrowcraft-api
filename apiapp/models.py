@@ -21,6 +21,8 @@ class Coffee(models.Model):
     description = models.TextField(max_length=512)
     imageurl = models.TextField(max_length=128, null=True)
     slug = models.fields.SlugField
+    def __str__(self) -> str:
+        return self.name
 
 class RoastType(models.Model):
     id = models.AutoField(primary_key=True)
@@ -46,3 +48,13 @@ class CodeProject(models.Model):
     dateadded = models.DateTimeField(auto_now=True)
     stacktype= models.ForeignKey("StackType", on_delete=models.DO_NOTHING, related_name="codeprojects")
     
+class Cart(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=64)
+    
+
+class CartItem(models.Model):
+    id = models.AutoField(primary_key=True)
+    cart = models.ForeignKey("Cart", on_delete=models.CASCADE, related_name="cartitems")
+    coffee = models.ForeignKey("Coffee", on_delete=models.CASCADE, related_name="cartitems")
+    quantity = models.IntegerField()
