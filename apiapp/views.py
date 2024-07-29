@@ -3,8 +3,8 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import permissions
 
-from .serializers import CartItemSerializer, CartSerializer, CodeProjectSerializer, CoffeeSerializer, BrandSerializer, RoastTypeSerializer, StackTypeSerializer
-from .models import Cart, CartItem, CodeProject, RoastType, Brand, Coffee, StackType
+from .serializers import CartItemSerializer, CartSerializer, CodeProjectSerializer, CoffeeSerializer, BrandSerializer, RoastTypeSerializer, SessionSerializer, StackTypeSerializer
+from .models import Cart, CartItem, CodeProject, RoastType, Brand, Coffee, Session, StackType
 
 class BrandViewSet(viewsets.ModelViewSet):
     queryset=Brand.objects.all()
@@ -39,3 +39,10 @@ class CartItemViewSet(viewsets.ModelViewSet):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class SessionViewSet(viewsets.ModelViewSet):
+    queryset = Session.objects.all()
+    serializer_class = SessionSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+

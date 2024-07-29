@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.db.models.fields import CharField, AutoField, BooleanField
 
@@ -50,7 +51,8 @@ class CodeProject(models.Model):
     
 class Cart(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, null=True)
+    session = models.ForeignKey("Session", on_delete=models.CASCADE, related_name="cart")
     
 
 class CartItem(models.Model):
@@ -58,3 +60,8 @@ class CartItem(models.Model):
     cart = models.ForeignKey("Cart", on_delete=models.CASCADE, related_name="cartitems")
     coffee = models.ForeignKey("Coffee", on_delete=models.CASCADE, related_name="cartitems")
     quantity = models.IntegerField()
+
+class Session(models.Model):
+    id = models.AutoField(primary_key=True)
+    datecreated=models.DateTimeField(auto_now=True)
+    active = models.BooleanField(null=True)
