@@ -1,4 +1,4 @@
-from apiapp.views import BrandViewSet, CartItemViewSet, CartViewSet, CodeProjectViewSet, RoastTypeViewSet, CoffeeViewSet, StackTypeViewSet
+from apiapp.views import BrandViewSet, CartItemViewSet, CartViewSet, CodeProjectViewSet, RoastTypeViewSet, CoffeeViewSet, StackTypeViewSet, SessionViewSet
 from rest_framework import routers
 from django.urls import path, include
 
@@ -10,6 +10,7 @@ router.register(r'codeprojects', CodeProjectViewSet, basename='codeproject')
 router.register(r'stacktypes', StackTypeViewSet, basename='stacktype')
 router.register(r'cart', CartViewSet, basename='cart')
 router.register(r'cartitems', CartItemViewSet, basename='cartitems')
+router.register(r'session', SessionViewSet, basename='session')
 
 urlpatterns = [
     path('', include(router.urls))

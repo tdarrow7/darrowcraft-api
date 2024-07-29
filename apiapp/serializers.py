@@ -1,5 +1,5 @@
 from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer, ReadOnlyField, SlugRelatedField
-from .models import Cart, CartItem, CodeProject, Coffee, RoastType, Brand, StackType
+from .models import Cart, CartItem, CodeProject, Coffee, RoastType, Brand, Session, StackType
 
 class CoffeeSerializer(HyperlinkedModelSerializer):
     roasttype = SlugRelatedField(
@@ -41,7 +41,7 @@ class CodeProjectSerializer(HyperlinkedModelSerializer):
 class CartSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Cart
-        fields = ['id', 'url', 'name']
+        fields = ['id', 'url', 'name', 'session']
 
 class CartItemSerializer(HyperlinkedModelSerializer):
     coffee = SlugRelatedField(
@@ -50,5 +50,9 @@ class CartItemSerializer(HyperlinkedModelSerializer):
     )
     class Meta:
         model = CartItem
-        fields = ['id', 'coffee', 'cart', 'quantity']
+        fields = ['id', 'coffee', 'cart', 'quantity' ]
 
+class SessionSerializer(HyperlinkedModelSerializer):
+    class Meta:
+        model = Session
+        fields = ['id', 'url', 'datecreated', 'active']
