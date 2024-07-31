@@ -1,10 +1,24 @@
 # example/views.py
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
+from django.contrib.auth import authenticate
 
 from .serializers import CartItemSerializer, CartSerializer, CodeProjectSerializer, CoffeeSerializer, BrandSerializer, RoastTypeSerializer, SessionSerializer, StackTypeSerializer
 from .models import Cart, CartItem, CodeProject, RoastType, Brand, Coffee, Session, StackType
+
+# class LoginView(APIView):
+#     def post(self, request):
+#         username = request.data.get('username')
+#         password = request.data.get('password')
+#         user = authenticate(request, username=username, password=password)
+
+#         if user is not None:
+#             token = generate_token(user)
+#             return Response({'token': token}, status=status.HTTP_200_OK)
+#         else:
+#             return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
 class BrandViewSet(viewsets.ModelViewSet):
     queryset=Brand.objects.all()
