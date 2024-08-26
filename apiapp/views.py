@@ -1,4 +1,5 @@
 # example/views.py
+from django.http import JsonResponse
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -60,3 +61,22 @@ class SessionViewSet(viewsets.ModelViewSet):
     serializer_class = SessionSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+def get_cart_with_items(request, cart_id):
+    try:
+        cart = Cart.objects.prefetch_related('cartitems').get(id=cart_id)
+        cart_data = {
+            'id': cart.id,
+            'name': cart.name,
+            'cartitems': [
+                {
+                    'id': item.id,
+                    'coffee': item.coffee.name,
+                    'quantity': item.quantity
+                    # Add other fields as necessary
+                }
+                for item in cart.cartitems.all()
+            ]
+        }
+        return JsonResponse(cart_data)
+    except Cart.DoesNotExist:
+        return JsonResponse({'error': 'Cart not found'}, status=404)

@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer, ReadOnlyField, SlugRelatedField
 from .models import Cart, CartItem, CodeProject, Coffee, RoastType, Brand, Session, StackType
 
@@ -38,10 +39,6 @@ class CodeProjectSerializer(HyperlinkedModelSerializer):
         model = CodeProject
         fields = ['id', 'url', 'name', 'link', 'description', 'languages', 'dateadded', 'github', 'stacktype' ]
 
-class CartSerializer(HyperlinkedModelSerializer):
-    class Meta:
-        model = Cart
-        fields = ['id', 'url', 'name', 'session']
 
 class CartItemSerializer(HyperlinkedModelSerializer):
     coffee = SlugRelatedField(
@@ -51,6 +48,12 @@ class CartItemSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = CartItem
         fields = ['id', 'coffee', 'cart', 'quantity' ]
+
+class CartSerializer(ModelSerializer):
+    # options = CartItemSerializer(many=True)
+    class Meta:
+        model = Cart
+        fields = ['id', 'name', 'session', ]
 
 class SessionSerializer(HyperlinkedModelSerializer):
     class Meta:
