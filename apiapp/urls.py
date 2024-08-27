@@ -1,4 +1,4 @@
-from apiapp.views import BrandViewSet, CartItemViewSet, CartViewSet, CodeProjectViewSet, RoastTypeViewSet, CoffeeViewSet, StackTypeViewSet, SessionViewSet
+from apiapp.views import BrandViewSet, CartItemViewSet, CartViewSet, CodeProjectViewSet, RoastTypeViewSet, CoffeeViewSet, StackTypeViewSet, SessionViewSet, get_cart_with_items
 from rest_framework import routers
 from django.urls import path, include
 
@@ -13,5 +13,6 @@ router.register(r'cartitems', CartItemViewSet, basename='cartitems')
 router.register(r'session', SessionViewSet, basename='session')
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('cart-with-items/<int:cart_id>/', get_cart_with_items, name='get_cart_with_items')
 ]
