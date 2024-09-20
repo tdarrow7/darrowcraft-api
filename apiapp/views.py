@@ -70,7 +70,12 @@ def get_cart_with_items(request, cart_id):
             'cartitems': [
                 {
                     'id': item.id,
-                    'coffee': item.coffee.name,
+                    'coffee': {
+                        'id': item.coffee.id,
+                        'name': item.coffee.name,
+                        'roasttype': item.coffee.roasttype.name,
+                        'imageurl': item.coffee.imageurl,
+                    },
                     'quantity': item.quantity
                     # Add other fields as necessary
                 }
