@@ -68,6 +68,11 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.timdarrow.com',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'https://www.timdarrow.com',
+]
+
 CORS_ALLOW_HEADERS = (
     "accept",
     "authorization",
