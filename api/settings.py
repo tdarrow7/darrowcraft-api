@@ -34,7 +34,12 @@ JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", 'False') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost:3000', '.vercel.app', '.timdarrow.com']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '.vercel.app',
+    '.timdarrow.com',
+]
 
 
 # Application definition
@@ -72,6 +77,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'https://www.timdarrow.com',
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOW_HEADERS = (
     "accept",
