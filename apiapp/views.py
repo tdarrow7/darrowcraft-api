@@ -75,7 +75,6 @@ def get_cart_with_items(request, cart_id):
                         'name': item.coffee.name,
                         'roasttype': item.coffee.roasttype.name,
                         'imageurl': item.coffee.imageurl,
-                        'price': item.coffee.price
                     },
                     'quantity': item.quantity
                     # Add other fields as necessary
