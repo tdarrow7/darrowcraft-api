@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.db.models.fields import CharField, AutoField, BooleanField
+from django.forms import DecimalField
 
 # Create your models here.
 
@@ -22,8 +23,10 @@ class Coffee(models.Model):
     description = models.TextField(max_length=512)
     imageurl = models.TextField(max_length=128, null=True)
     slug = models.fields.SlugField
+    price = DecimalField(min_value=0)
     def __str__(self) -> str:
         return self.name
+    
 
 class RoastType(models.Model):
     id = models.AutoField(primary_key=True)
