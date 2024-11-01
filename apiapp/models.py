@@ -23,7 +23,7 @@ class Coffee(models.Model):
     description = models.TextField(max_length=512)
     imageurl = models.TextField(max_length=128, null=True)
     slug = models.fields.SlugField
-    price = IntegerField(min_value=0)
+    # price = IntegerField(min_value=0)
     def __str__(self) -> str:
         return self.name
     

@@ -13,7 +13,7 @@ class CoffeeSerializer(HyperlinkedModelSerializer):
     )
     class Meta:
         model = Coffee
-        fields = ['id', 'url', 'name', 'isground', 'description', 'dateadded', 'imageurl', 'brand', 'roasttype', 'price']
+        fields = ['id', 'url', 'name', 'isground', 'description', 'dateadded', 'imageurl', 'brand', 'roasttype']
 
 class RoastTypeSerializer(HyperlinkedModelSerializer):
     class Meta:
